@@ -37,10 +37,10 @@
     finishBtn.addEventListener( 'click', ( e ) => {
       if ( document.querySelector("#whhDoDonate").checked === true ) {
         let donateForm = document.querySelector( '#donateFrm' );
-				var w = window.open('about:blank','Popup_Window','toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=' + window.outerWidth + ',height=' + window.outerHeight + ',left=' + window.screenLeft + ',top=' + window.screenTop);
-				donateForm.target = 'Popup_Window';
-				donateForm.submit();
-				window.focus();
+        var w = window.open('about:blank','Popup_Window','toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=' + window.outerWidth + ',height=' + window.outerHeight + ',left=' + window.screenLeft + ',top=' + window.screenTop);
+        donateForm.target = 'Popup_Window';
+        donateForm.submit();
+        window.focus();
       }
     });
     } else {
