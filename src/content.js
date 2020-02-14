@@ -12,7 +12,7 @@
         <form style="display: none" id="donateFrm" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank">
           <input type="hidden" name="cmd" value="_donations" />
           <input type="hidden" name="business" value="sb-hegeo1056295@business.example.com" />
-          <input type="hidden" name="item_name" value="For saving the world" />
+          <input type="hidden" name="item_name" value="Zur Rettung der Welt" />
           <input type="hidden" name="currency_code" value="EUR" />
           <input type="hidden" name="amount" id="whhDonationAmount" value="0" />
         </form>
@@ -54,7 +54,8 @@
     let donateTo = document.querySelector( '#headerDonateToName' );
 
     if ( donateTo ) {
-      donateTo.innerText = 'Deutsche Welthungerhilfe'
+      donateTo.innerText = 'Deutsche Welthungerhilfe';
+      // checkForDonateTo2();
     } else {
       setTimeout( () => {
         checkForDonateTo();
@@ -62,9 +63,36 @@
     }
   };
 
+  let checkForDonateTo2 = () => {
+    let donateTo = document.querySelector( '.vx_checkbox + p' );
+
+    if ( donateTo ) {
+      donateTo.innerHTML = donateTo.innerHTML.replace( /John Doe's Test Store/, 'die Deutsche Welthungerhilfe' );
+      // checkForDonateTo3();
+    } else {
+      setTimeout( () => {
+        checkForDonateTo2();
+      }, 100 )
+    }
+  };
+
+  let checkForDonateTo3 = () => {
+    let donateTo = document.querySelector( '.confirmation .confirmation_header >  h4' );
+
+    if ( donateTo ) {
+      donateTo.innerHTML = donateTo.innerHTML.replace( /John Doe's Test Store/, 'die Deutsche Welthungerhilfe' );
+    } else {
+      setTimeout( () => {
+        checkForDonateTo3();
+      }, 100 )
+    }
+  };
+
   let onLoad = () => {
     checkForPaymentFinish();
     checkForDonateTo();
+    checkForDonateTo2();
+    checkForDonateTo3();
   };
 
   window.addEventListener( 'DOMContentLoaded', onLoad );
