@@ -16,6 +16,8 @@
     -webkit-transition: .2s;
     /* 0.2 seconds transition on hover */
     transition: opacity .2s;
+
+    border-radius: 6px;
 }
 
 /* Mouse-over effects */
@@ -34,6 +36,10 @@
     height: 25px;
     /* Slider handle height */
     background: #4CAF50;
+    border: solid green 3px;
+    border-style: outset;
+    border-radius: 6px;
+
     /* Green background */
     cursor: pointer;
     /* Cursor on hover */
@@ -48,4 +54,7 @@
     /* Green background */
     cursor: pointer;
     /* Cursor on hover */
+    border: solid green 3px;
+    border-style: outset;
+    border-radius: 6px;
 }

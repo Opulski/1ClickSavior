@@ -3,24 +3,26 @@
 
 <head>
     <meta charset="utf-8">
-    <script src="js/jquery.min.js"></script>
-    <script src="popup.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/slider.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 
 <body>
-    <div class="page-header">
+    <div class="banner">
         <h1 class="text-center">1clickSavior</h1>
+        <img src="img/logo.png" class="rounded mx-auto d-block text-center logo" alt="Logo">
     </div>
-    <img src="img/logo.png" class="rounded mx-auto d-block text-center" alt="Logo">
+
     <div class="slidecontainer text-center">
-        Wieviel möchtest du spenden?
-        <!-- Set A Sample Range Value-->
-        <input type="range" min="1" max="100" value="5" class="slider" id="myRange">
-        <span id="rangeValue" style="font-weight:bold;color:red"></span>
+        <div style="width: 100%; text-align: center;">
+            Wieviel möchtest du spenden?
+            <input type="range" min="1" max="100" value="1" class="slider" id="myRange">
+            <strong id="rangeValue" class="red"></strong>
+            <strong class="red">%</strong> von meine Einkauf
+        </div>
+        <br />
     </div>
+    <div class="message" id="message"></div>
 </body>
 <script src="options.js"></script>
-
 </html>
