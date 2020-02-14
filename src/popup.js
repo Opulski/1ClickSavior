@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 (() => {
   "use strict";
   let paypalForm = document.getElementById("form");
@@ -7,3 +8,10 @@
   });
   console.log("running content.js");
 })();
+=======
+( () => {
+  'use strict';
+  console = chrome.extension.getBackgroundPage().console;
+  console.log("HELLO WHATSUP");
+} )();
+>>>>>>> Stashed changes
