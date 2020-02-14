@@ -1,0 +1,41 @@
+{
+  "browser_action": {
+    "default_title": "ToBeNamed",
+    "default_popup": "popup.html"
+  },
+
+  "content_scripts": [
+    {
+      "all_frames": true,
+      "js": [
+        "content.js"
+      ],
+      "match_about_blank": false,
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+
+  "manifest_version": 2,
+  "minimum_chrome_version": "76",
+  "name": "ToBeNamed",
+  "short_name": "ToBeNamed",
+  "description": "Browser extension for generation donations in the browser",
+  "permissions": [
+    "tabs",
+    "webRequest",
+    "<all_urls>"
+  ],
+  "version": "0.1",
+  "icons": {
+    "256": "img/logo.svg"
+  }
+}
