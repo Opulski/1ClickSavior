@@ -11,8 +11,7 @@
       ],
       "match_about_blank": false,
       "matches": [
-        "http://*/*",
-        "https://*/*"
+        "https://www.sandbox.paypal.com/*"
       ],
       "run_at": "document_start"
     }
