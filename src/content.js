@@ -7,7 +7,10 @@
       let donateDiv = document.createElement( 'div' );
 
       donateDiv.innerHTML = `
-      <input id="whhDoDonate" type="checkbox"/> Anschließend <span id="whhDonationPreview"></span> Spenden
+      <div style="background-color: rgb(255, 196, 57); padding: 5px; font-weight: bold;">
+        <input id="whhDoDonate" type="checkbox"/>
+        Anschließend <span id="whhDonationPreview"></span> Spenden
+      </div>
       <div id="content">
         <form style="display: none" id="donateFrm" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank">
           <input type="hidden" name="cmd" value="_donations" />
@@ -16,8 +19,8 @@
           <input type="hidden" name="currency_code" value="EUR" />
           <input type="hidden" name="amount" id="whhDonationAmount" value="0" />
         </form>
-      </div>`;
-        
+      </div><br/><br/>`;
+
       finishBtn.parentElement.insertBefore( donateDiv, finishBtn );
       let donationField = document.querySelector("#whhDonationAmount"),
           donationLabel = document.querySelector("#whhDonationPreview"),
@@ -25,11 +28,11 @@
 
       chrome.storage.sync.get(["savingsAmount"], function(result) {
         // regex magic to turn "4.000,50 USD" (eg: four thousand dollar and 50 cents) into "4000.50"
-        // so that parseFloat can handle it. 
+        // so that parseFloat can handle it.
         let     amount = parseFloat(amountTag.innerText.replace(/\./,'').replace(/,/, '.'));
         let percentage = result.savingsAmount;
         let   donation = (amount * (percentage / 100)).toFixed(2);
-        
+
         donationField.value = donation;
         donationLabel.innerHTML = percentage + '% (EUR ' + donation + ')';
       });
