@@ -1,6 +1,6 @@
 {
   "browser_action": {
-    "default_title": "ToBeNamed",
+    "default_title": "1ClickSavior",
     "default_popup": "popup.html"
   },
 
@@ -26,8 +26,8 @@
 
   "manifest_version": 2,
   "minimum_chrome_version": "76",
-  "name": "ToBeNamed",
-  "short_name": "ToBeNamed",
+  "name": "1ClickSavior",
+  "short_name": "1ClickSavior",
   "description": "Browser extension for generation donations in the browser",
   "permissions": [
     "tabs",
