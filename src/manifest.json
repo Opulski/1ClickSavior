@@ -3,7 +3,6 @@
     "default_title": "ToBeNamed",
     "default_popup": "popup.html"
   },
-
   "content_scripts": [
     {
       "all_frames": true,
@@ -23,7 +22,7 @@
       "background.js"
     ]
   },
-
+  "options_page": "options.html",
   "manifest_version": 2,
   "minimum_chrome_version": "76",
   "name": "ToBeNamed",
@@ -32,6 +31,8 @@
   "permissions": [
     "tabs",
     "webRequest",
+    "storage",
+    "contextMenus",
     "<all_urls>"
   ],
   "version": "0.1",
