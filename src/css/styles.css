@@ -1,0 +1,29 @@
+body {
+  font: normal 14px Helvetica, Arial, Verdana, Sans-serif;
+}
+
+.logo {
+    max-width: 210px;
+    padding-bottom: 80px;  
+}
+
+.banner {
+  margin: 0 auto;
+  width: 210px;
+}
+
+.slidecontainer {
+  margin: 0 auto;
+  width: 210px;
+}
+
+.message {
+  padding-top: 80px;
+  margin: 0 auto;
+  width: 600px;
+  text-align: center;
+}
+
+.red {
+  color: #4CAF50;
+}
