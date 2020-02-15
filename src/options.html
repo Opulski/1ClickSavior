@@ -9,48 +9,65 @@
 
 <body>
     <div class="banner">
-        <h1 class="text-center">1clickSavior</h1>
         <img src="img/logo.png" class="rounded mx-auto d-block text-center logo" alt="Logo">
     </div>
 
-    <div style="width: 100%; text-align: center;">
-        <form>  
-            <label> Spendenhöhe am Einkaufswert orientieren? 
-            </label> 
-            <input type="checkbox"> 
-        </form>  
+    <div id="step1" class="banner">
+        Herzlichen, dass Du
+        <h3 class="text-center">1clickSavior</h3>
+        installiert hast! Ein großartiger erster Schritt!<br/>
+        Hättest Du gerade kurz Zeit für ein paar kurze, schnelle Einstellungen?
+        
+        <div style="width: 100%; text-align: center;">
+            <form>  
+                <input type="button" value="Ja klar" id="toStep2"> <input type="button" value="Nein, nicht jetzt" id="later"> 
+            </form>  
+        </div>
     </div>
-    <br />
-    <br/>
-    <div style="width: 100%; text-align: center;">
+
+    <div id="step2" class="banner" style="display:none;">
+        <h3>Danke für Deine Zeit!</h3>
+        Fühl Dich frei, jederzeit abzubrechen!<br/>
+        &#160;<br/>
+        <b>Kurz zur Erklärung</b><br/>
+        &#160;<br/>
+        Immer wenn Du Dir etwas schönes gönnst (und wir mit Dir), wird Dich 1clickSavior daran erinnern, dass es Menschen auf dieser Welt gibt, denen es schwerer fällt, etwas zu kaufen, was nicht dem direkten Überleben dient.<br/>
+        &#160;<br/>
+        Diese Erinnerung zwingt Dich zu rein gar nichts, erlaubt Dir aber, einen kleinen Beitrag zur Bekämpfung von Hunger und Armut zu leisten <br/>
+        &#160;<br/>
+        <input type="button" value="OK, cool!" id="toStep3">
+    </div>
+
+    <div id="step3" class="banner" style="display:none;">
+        Möchtest Du Deine Spendenhöhe am Einkaufswert orientieren?<br/>
+        &#160;<br/>
+        (Keine Angst, wir lesen nicht wirklich mit und schon gar nicht übertragen wir irgendwelche Daten. Alles bleibt in Deinem Browser)<br/>
+        &#160;<br/>        
+        <input type="button" value="Klingt gut" id="toStep4a">
+        <input type="button" value="Lieber ein Festbetrag" id="toStep4b">
+    </div>
+
+    <div id="step4a" class="banner" style="display:none;">
+      <div class="slidecontainer text-center">
+        <div style="width: 100%; text-align: center;">
+            Wieviel möchtest Du spenden?
+            <input type="range" min="1" max="100" value="1" class="slider" id="myRange">
+            <strong id="rangeValue" class="red"></strong>
+            <strong class="red">%</strong> von meinem Einkauf
+        </div>
+        &#160;<br/>
+    </div>
+
+    <div id="step4b" class="banner" style="display:none;">
         <form>  
-            <label> Wieviel möchten Sie spenden? 
+            <label> Wieviel möchtest Du spenden? 
             </label> 
             <br/><br/>
             <input type="text"> 
         </form>  
     </div>
-    <br/>
-    <br/>
-    <div class="slidecontainer text-center">
-        <div style="width: 100%; text-align: center;">
-            Wieviel möchtest du spenden?
-            <input type="range" min="1" max="100" value="1" class="slider" id="myRange">
-            <strong id="rangeValue" class="red"></strong>
-            <strong class="red">%</strong> von meine Einkauf
-        </div>
-        <br />
-        <br/>
-        
-        
-        <div style="width: 100%; text-align: center;">
-            <form>  
-                <input type="button" value="Später konfigurieren" id="later"> 
-            </form>  
-        </div>
 
-    </div>
-    <div class="message" id="message"></div>
+    <div class="banner" id="message"></div>
     <script src="options.js"></script>
 </body>
 
