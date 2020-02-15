@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-
+  <link rel="stylesheet" type="text/css" href="css/popup.css">
 </head>
 
 <body style="width: 200px;">
@@ -11,9 +11,9 @@
 
   </div>
   <div id="content">
-    <div id="settings"><img src="img/settings.png" width="20" style="float: right"/></div>
+    <div id="settings"><img src="img/settings.png" width="20" style="float: right" /></div>
     <div>
-      Dein bisheriges Spendenvolu-<br/>men beläuft sich auf <span id="overallDonations"></span>!
+      Dein bisheriges Spendenvolu-<br />men beläuft sich auf <span id="overallDonations"></span>!
       <div id="donationsComment"></div>
       &#160;
     </div>
@@ -23,11 +23,17 @@
       <input type="hidden" name="item_name" value="Rettung der Welt" />
       <input type="hidden" name="currency_code" value="EUR" />
       <input type="hidden" name="amount" id="paypalFormValueAmount" value="10" />
-      <input type="image" src="https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="Spenden mit dem PayPal-Button" />
+      <input type="image" src="https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donate_SM.gif" border="0" name="submit"
+        alt="Spenden mit dem PayPal-Button" />
     </form>
+    <div id="childSavior"><img src="img/hungryKid.jpg" alt="Smiley face" height="200" width="200">
+      <progress max="100" value="80" id="childProgressBar"></progress>
+      <span id="overallDonations"></span>
+    </div>
 
-    <div style="text-align: center">&#160;<br/><a href="partners.html" target="_partners">Leider kein Geld!</a></div>
+    <div style="text-align: center">&#160;<br /><a href="partners.html" target="_partners">Leider kein Geld!</a></div>
   </div>
   <script src="popup.js"></script>
 </body>
+
 </html>
