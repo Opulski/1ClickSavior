@@ -3,13 +3,18 @@ body {
 }
 
 .logo {
-    max-width: 210px;
-    padding-bottom: 80px;  
+  max-width: 210px;
+  padding-bottom: 80px;
 }
 
 .banner {
   margin: 0 auto;
   width: 210px;
+}
+
+.centerColumn {
+  margin: 0 auto;
+  width: 640px;
 }
 
 .slidecontainer {
@@ -26,4 +31,113 @@ body {
 
 .red {
   color: #4CAF50;
+}
+
+input[type=button], input[type=submit] {
+  padding: 0.5em 1em;
+  border-radius: 6px;
+  margin: 1em 0.5em;
+}
+
+.redButton {
+  background-color: #dc3545;
+  color: white;
+  border-color: #e70b21;
+}
+
+.greenButton {
+  background-color: #4CAF50;
+  color: white;
+  border-color: rgb(7, 95, 10);
+}
+
+input[type=submit]:disabled.greenButton {
+  background-color: rgb(131, 236, 135);
+  border-color: #eee;
+  color: green;
+}
+
+.text-center, .centered {
+  width: 100%;
+  text-align: center;
+  margin-top: 1em;
+}
+
+.centered {
+  background-color: #efefef;
+}
+
+.step {
+  float: right;
+  text-align: right;
+  margin: 1em;
+  display: inline;
+}
+
+.inline {
+  display: inline;
+}
+
+p.info {
+  display: block;
+  background-color: rgba(62, 238, 46, 0.7);
+  color: green;
+  border-radius: 6px;
+  padding: 1em;
+}
+
+.exclaim {
+  float: left;
+  font-size: 36px;
+  padding: 0 10px;
+  margin-top: -5px;
+  font-weight: bolder;
+}
+
+.input-group {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  width: 100%;
+}
+
+.input-group-prepend {
+  margin-right: -1px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.input-group-text {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: .375rem .75rem;
+  margin-bottom: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  text-align: center;
+  white-space: nowrap;
+  background-color: #e9ecef;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+}
+
+input {
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  padding-left: 1em;
 }
