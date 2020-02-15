@@ -2,72 +2,78 @@
   "use strict";
 
   const baseAmount = 10,
-              PERC = 1,
-               FIX = 2;
+        PERC = 1,
+        FIX = 2;
 
-  var  slider = document.getElementById("myRange");
-  var  output = document.getElementById("rangeValue");
-  var message = document.getElementById("message");
-  var   later = document.getElementById("later");
-  var   step2 = document.getElementById("toStep2");
-  var   step3 = document.getElementById("toStep3");
-  var  step4a = document.getElementById("toStep4a");
-  var  step4b = document.getElementById("toStep4b");
+  var        step2a = document.getElementById("tostep2a"),
+             step2b = document.getElementById("tostep2b"),
+             actual = document.getElementById("actual"),
+      currentAmount = 0,
+        currentType = 0;
 
   let setKiller = (id) => {
     document.getElementById(id).onclick = function() { window.close(); };
   };
 
-  chrome.storage.sync.set({ savingsAmount: baseAmount, savingsType: PERC }, function() {
-    slider.value = baseAmount;
-    output.innerHTML = parseInt(slider.value); // Display the default slider value
+  chrome.storage.sync.get(["savingsAmount", "savingsType"], function(result) {
+    currentAmount = result.savingsAmount;
+      currentType = result.savingsType;
+
+    if ( currentType === PERC ) {
+      actual.innerHTML = currentAmount + '% vom Einkauf';
+    } else {
+      actual.innerHTML = '€ ' + currentAmount;
+    }
   });
 
-  later.onclick = function() { window.close() }
-
-  step2.onclick = function() {
+  step2a.onclick = function() {
     document.querySelector( '#step1' ).style.display = 'none';
-    document.querySelector( '#step2' ).style.display = 'block';
+    document.querySelector( '#step2a' ).style.display = 'block';
+    setKiller("exit2a");
+
+    // Update the current slider value (each time you drag the slider handle)
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("rangeValue");
+
+    if ( currentType === PERC ) {
+          slider.value = currentAmount;
+      output.innerHTML = currentAmount;
+    } else {
+          slider.value = baseAmount;
+      output.innerHTML = baseAmount;
+    }
+
+    slider.oninput = function() {
+      output.innerHTML = slider.value;
+    };
+
+    slider.onmouseup = function() {
+      chrome.storage.sync.set({ savingsAmount: parseInt(this.value), savingsType: PERC }, function() {
+        return true;
+      });
+    };
   }
 
-  step3.onclick = function() {
-    document.querySelector( '#step2' ).style.display = 'none';
-    document.querySelector( '#step3' ).style.display = 'block';
-  }
-
-  step4a.onclick = function() {
-    document.querySelector( '#step3' ).style.display = 'none';
-    document.querySelector( '#step4a' ).style.display = 'block';
-    setKiller("exit4a");
-  }
-
-  step4b.onclick = function() {
-    document.querySelector( '#step3' ).style.display = 'none';
-    document.querySelector( '#step4b' ).style.display = 'block';
+  step2b.onclick = function() {
+    document.querySelector( '#step1' ).style.display = 'none';
+    document.querySelector( '#step2b' ).style.display = 'block';
 
     var fixed  = document.getElementById("FestBetrag");
+    if ( currentType === FIX ) {
+      fixed.value = currentAmount;
+    } else {
+      fixed.value = baseAmount;
+    }
 
     fixed.oninput = function() {
       let val = this.value;
       chrome.storage.sync.set({ savingsAmount: parseInt(val), savingsType: FIX }, function() {
-        setKiller("exit4b");
-        var e4b = document.querySelector("#exit4b");
+        setKiller("exit2b");
+        var e4b = document.querySelector("#exit2b");
         val !== '' ?
           e4b.removeAttribute("disabled") :
           e4b.setAttribute("disabled", true);
       });
     };
   }
-
-  // Update the current slider value (each time you drag the slider handle)
-  slider.oninput = function() {
-    output.innerHTML = slider.value;
-  };
-
-  slider.onmouseup = function() {
-    chrome.storage.sync.set({ savingsAmount: parseInt(this.value), savingsType: PERC }, function() {
-      return true;
-    });
-  };
-
 })();
