@@ -7,7 +7,6 @@
 
   chrome.storage.sync.get(["overAllDonations"], result => {
     let overAllDonations = result.overAllDonations || 0;
-    overAllDonations = 3000;
     let progressValue = Number(overAllDonations) % 100;
     let numberOfChildsSavedNumber = Math.floor(Number(overAllDonations) / 100);
     document.getElementById("childProgressBar").value = progressValue;
