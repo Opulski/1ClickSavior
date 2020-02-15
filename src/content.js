@@ -15,7 +15,7 @@
         <form style="display: none" id="donateFrm" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank">
           <input type="hidden" name="cmd" value="_donations" />
           <input type="hidden" name="business" value="sb-hegeo1056295@business.example.com" />
-          <input type="hidden" name="item_name" value="Zur Rettung der Welt" />
+          <input type="hidden" name="item_name" value="Rettung der Welt" />
           <input type="hidden" name="currency_code" value="EUR" />
           <input type="hidden" name="amount" id="whhDonationAmount" value="0" />
         </form>
