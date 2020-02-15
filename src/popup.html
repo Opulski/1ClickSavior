@@ -11,12 +11,33 @@
 
   </div>
   <div id="content">
-    <div id="settings"><img src="img/settings.png" width="20" style="float: right" /></div>
-    <div>
-      Dein bisheriges Spendenvolu-<br />men beläuft sich auf <span id="overallDonations"></span>!
-      <div id="donationsComment"></div>
-      &#160;
+
+    <div id="container" style="white-space:nowrap">
+      <div id="texts" style="text-align: center">
+        <div id="image" style="float: left">
+          <img src="img/logo.png" width=20 height=20 />
+
+        </div>
+        <h3 style="display: inline">1ClickSavior</h3>
+
+        <div id="settings" style="float: right; cursor:pointer"><img src="img/settings.png" width="20" />
+        </div>
+      </div>
     </div>
+    <hr>
+    <p>
+      Erfahre <a href="https://www.welthungerhilfe.de/">hier</a> warum du mit 100€ <br>Ein Kind in Not rettest.
+    </p>
+
+    <div id="childSavior"><img src="img/hungryKid.jpg" alt="Smiley face" height="200" width="200" id="hungryKidsImage">
+    </div>
+    <p></p>
+    <progress max="100" value="80" id="childProgressBar"></progress>
+
+    <p id="numberOfChildsSaved"></p>
+    <p id="overallDonations"></p>
+    <hr>
+    <p></p>
     <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="form" align="center">
       <input type="hidden" name="cmd" value="_donations" />
       <input type="hidden" name="business" value="sb-hegeo1056295@business.example.com" />
@@ -26,13 +47,10 @@
       <input type="image" src="https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donate_SM.gif" border="0" name="submit"
         alt="Spenden mit dem PayPal-Button" />
     </form>
-    <div id="childSavior"><img src="img/hungryKid.jpg" alt="Smiley face" height="200" width="200">
-      <progress max="100" value="80" id="childProgressBar"></progress>
-      <span id="overallDonations"></span>
-    </div>
-
     <div style="text-align: center">&#160;<br /><a href="partners.html" target="_partners">Leider kein Geld!</a></div>
   </div>
+
+
   <script src="popup.js"></script>
 </body>
 

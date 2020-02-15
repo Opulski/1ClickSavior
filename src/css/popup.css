@@ -1,5 +1,6 @@
 #settingsIcon {
-    float: right
+    float: right;
+    cursor: pointer;
 }
 
 /*
@@ -25,4 +26,30 @@ progress[value]::-webkit-progress-value {
         -webkit-linear-gradient(left, rgb(204, 0, 0) 0%, rgb(45, 0, 128) 60px, rgb(0, 128, 17) 200px);
 
     border-radius: 5px;
+}
+
+h3 {
+    color: #999999;
+    font-family: arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 0px;
+    margin-bottom: 1px;
+}
+
+p,
+span {
+    font-family: arial,
+        sans-serif;
+    font-size: 14px;
+    text-align: center;
+}
+
+a {
+    color: darkcyan;
+    text-decoration: none;
+}
+
+a:hover {
+    color: cyan;
 }

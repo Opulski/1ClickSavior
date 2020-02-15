@@ -2,9 +2,11 @@
   "use strict";
 
   let checkForPaymentFinish = () => {
-    let finishBtn = document.querySelector( '#button > input[ value="Jetzt bezahlen" ]' );
-    if ( finishBtn ) {
-      let donateDiv = document.createElement( 'div' );
+    let finishBtn = document.querySelector(
+      '#button > input[ value="Jetzt bezahlen" ]'
+    );
+    if (finishBtn) {
+      let donateDiv = document.createElement("div");
 
       donateDiv.innerHTML = `
       <div style="background-color: rgb(255, 196, 57); padding: 5px; font-weight: bold;">
@@ -21,81 +23,108 @@
         </form>
       </div><br/><br/>`;
 
-      finishBtn.parentElement.insertBefore( donateDiv, finishBtn );
+      finishBtn.parentElement.insertBefore(donateDiv, finishBtn);
       let donationField = document.querySelector("#whhDonationAmount"),
-          donationLabel = document.querySelector("#whhDonationPreview"),
-              amountTag = document.querySelector("format-currency > span");
+        donationLabel = document.querySelector("#whhDonationPreview"),
+        amountTag = document.querySelector("format-currency > span");
 
       chrome.storage.sync.get(["savingsAmount"], function(result) {
         // regex magic to turn "4.000,50 USD" (eg: four thousand dollar and 50 cents) into "4000.50"
         // so that parseFloat can handle it.
-        let     amount = parseFloat(amountTag.innerText.replace(/\./,'').replace(/,/, '.'));
+        let amount = parseFloat(
+          amountTag.innerText.replace(/\./, "").replace(/,/, ".")
+        );
         let percentage = result.savingsAmount;
-        let   donation = (amount * (percentage / 100)).toFixed(2);
+        let donation = (amount * (percentage / 100)).toFixed(2);
 
         donationField.value = donation;
-        donationLabel.innerHTML = percentage + '% (EUR ' + donation + ')';
+        donationLabel.innerHTML = percentage + "% (EUR " + donation + ")";
       });
 
-      finishBtn.addEventListener( 'click', ( e ) => {
-        if ( document.querySelector("#whhDoDonate").checked === true ) {
-          let donateForm = document.querySelector( '#donateFrm' );
-          var w = window.open('about:blank','Popup_Window','toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=' + window.outerWidth + ',height=' + window.outerHeight + ',left=' + window.screenLeft + ',top=' + window.screenTop);
-          donateForm.target = 'Popup_Window';
+      finishBtn.addEventListener("click", e => {
+        if (document.querySelector("#whhDoDonate").checked === true) {
+          let donateForm = document.querySelector("#donateFrm");
+          var w = window.open(
+            "about:blank",
+            "Popup_Window",
+            "toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=" +
+              window.outerWidth +
+              ",height=" +
+              window.outerHeight +
+              ",left=" +
+              window.screenLeft +
+              ",top=" +
+              window.screenTop
+          );
+          donateForm.target = "Popup_Window";
           donateForm.submit();
           window.focus();
         }
       });
     } else {
-      setTimeout( () => {
+      setTimeout(() => {
         checkForPaymentFinish();
-      }, 100 )
+      }, 100);
     }
   };
 
   let checkForDonateTo = () => {
-    let donateTo = document.querySelector( '#headerDonateToName' );
+    let donateTo = document.querySelector("#headerDonateToName");
 
-    if ( donateTo ) {
-      donateTo.innerText = 'Deutsche Welthungerhilfe';
+    if (donateTo) {
+      donateTo.innerText = "Deutsche Welthungerhilfe";
       // checkForDonateTo2();
     } else {
-      setTimeout( () => {
+      setTimeout(() => {
         checkForDonateTo();
-      }, 100 )
+      }, 100);
     }
   };
 
   let checkForDonateTo2 = () => {
-    let donateTo = document.querySelector( '.vx_checkbox + p' );
+    let donateTo = document.querySelector(".vx_checkbox + p");
 
-    if ( donateTo ) {
-      donateTo.innerHTML = donateTo.innerHTML.replace( /John Doe's Test Store/, 'die Deutsche Welthungerhilfe' );
+    if (donateTo) {
+      donateTo.innerHTML = donateTo.innerHTML.replace(
+        /John Doe's Test Store/,
+        "die Deutsche Welthungerhilfe"
+      );
       // checkForDonateTo3();
     } else {
-      setTimeout( () => {
+      setTimeout(() => {
         checkForDonateTo2();
-      }, 100 )
+      }, 100);
     }
   };
 
   let checkForDonateTo3 = () => {
-    let donateTo = document.querySelector( '.confirmation .confirmation_header >  h4' );
+    let donateTo = document.querySelector(
+      ".confirmation .confirmation_header >  h4"
+    );
 
-    if ( donateTo ) {
-      chrome.storage.sync.get( [ 'overAllDonations' ], ( result ) => {
-        let donationValue = parseFloat( donateTo.innerText.replace( /Sie haben ([\d\,]+).+EUR an.*/ms, '$1' ).replace( /,/, '.' ) );
+    if (donateTo) {
+      chrome.storage.sync.get(["overAllDonations"], result => {
+        let donationValue = parseFloat(
+          donateTo.innerText
+            .replace(/Sie haben ([\d\,]+).+EUR an.*/ms, "$1")
+            .replace(/,/, ".")
+        );
         let oldVal = result.overAllDonations || 0;
 
-        if ( !isNaN( donationValue ) ) {
-          chrome.storage.sync.set( { 'overAllDonations': oldVal + donationValue } );
+        if (!isNaN(donationValue)) {
+          chrome.storage.sync.set({
+            overAllDonations: oldVal + donationValue
+          });
         }
-      } );
-      donateTo.innerHTML = donateTo.innerHTML.replace( /John Doe's Test Store/, 'die Deutsche Welthungerhilfe' );
+      });
+      donateTo.innerHTML = donateTo.innerHTML.replace(
+        /John Doe's Test Store/,
+        "die Deutsche Welthungerhilfe"
+      );
     } else {
-      setTimeout( () => {
+      setTimeout(() => {
         checkForDonateTo3();
-      }, 100 )
+      }, 100);
     }
   };
 
@@ -106,5 +135,5 @@
     checkForDonateTo3();
   };
 
-  window.addEventListener( 'DOMContentLoaded', onLoad );
-} )();
+  window.addEventListener("DOMContentLoaded", onLoad);
+})();
