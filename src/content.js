@@ -1,6 +1,9 @@
 (() => {
   "use strict";
 
+  const PERC = 1,
+         FIX = 2;
+
   let checkForPaymentFinish = () => {
     let finishBtn = document.querySelector(
       '#button > input[ value="Jetzt bezahlen" ]'
@@ -25,20 +28,35 @@
 
       finishBtn.parentElement.insertBefore(donateDiv, finishBtn);
       let donationField = document.querySelector("#whhDonationAmount"),
-        donationLabel = document.querySelector("#whhDonationPreview"),
-        amountTag = document.querySelector("format-currency > span");
+          donationLabel = document.querySelector("#whhDonationPreview"),
+              amountTag = document.querySelector("format-currency > span");
 
-      chrome.storage.sync.get(["savingsAmount"], function(result) {
-        // regex magic to turn "4.000,50 USD" (eg: four thousand dollar and 50 cents) into "4000.50"
-        // so that parseFloat can handle it.
-        let amount = parseFloat(
-          amountTag.innerText.replace(/\./, "").replace(/,/, ".")
-        );
-        let percentage = result.savingsAmount;
-        let donation = (amount * (percentage / 100)).toFixed(2);
 
-        donationField.value = donation;
-        donationLabel.innerHTML = percentage + "% (EUR " + donation + ")";
+      chrome.storage.sync.get(["savingsAmount", "savingsType"], function(result) {
+        var curAmnt = result.savingsAmount,
+            curType = result.savingsType;
+
+
+        if ( curType === PERC ) {
+          // regex magic to turn "4.000,50 USD" (eg: four thousand dollar and 50 cents) into "4000.50"
+          // so that parseFloat can handle it.
+          let amount = parseFloat(
+            amountTag.innerText.replace(/\./, "").replace(/,/, ".")
+          );
+          let percentage = curAmnt;
+          let donation = (amount * (percentage / 100)).toFixed(2);
+
+          donationField.value = donation;
+          donationLabel.innerHTML = percentage + "% (EUR " + donation + ")";
+        } else {
+          var donation = 10;
+          if ( curType === FIX ) {
+            donation = curAmnt;
+          }
+
+          donationField.value = donation;
+          donationLabel.innerHTML = "EUR " + donation.toFixed(2);
+        }
       });
 
       finishBtn.addEventListener("click", e => {
