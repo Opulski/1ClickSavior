@@ -2,9 +2,7 @@
 <html>
 
 <head>
-<<<<<<< Updated upstream
   <meta charset="utf-8">
-
 
 </head>
 
@@ -13,63 +11,17 @@
 
   </div>
   <div id="content">
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="form">
+    <div id="settings"><img src="img/settings.png" width="20" style="float: right"/></div>
+    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="form" align="center">
       <input type="hidden" name="cmd" value="_donations" />
-      <input type="hidden" name="business" value="ludwig.opulski@gmail.com" />
-      <input type="hidden" name="item_name" value="Geld" />
+      <input type="hidden" name="business" value="sb-hegeo1056295@business.example.com" />
+      <input type="hidden" name="item_name" value="Rettung der Welt" />
       <input type="hidden" name="currency_code" value="EUR" />
-      <input type="hidden" name="amount" id="paypalFormValueAmount" value="5" />
-      <input type="image" src="https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donate_SM.gif" border="0" name="submit"
-        title="PayPal - The safer, easier way to pay online!" alt="Spenden mit dem PayPal-Button" />
-      <img alt="" border="0" src="https://www.paypal.com/de_DE/i/scr/pixel.gif" width="1" height="1" />
+      <input type="hidden" name="amount" id="paypalFormValueAmount" value="10" />
+      <input type="image" src="https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="Spenden mit dem PayPal-Button" />
     </form>
 
   </div>
   <script src="popup.js"></script>
 </body>
-
-=======
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="css/slider.css">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-</head>
-
-<body>
-    <br/>
-    <br/>
-    <div style="width: 100%; text-align: center;">
-        <form>  
-            <label> Spendenhöhe am Einkaufswert orientieren? 
-            </label> 
-            <input type="checkbox"> 
-        </form>  
-    </div>
-    <br />
-    <br/>
-    <div style="width: 100%; text-align: center;">
-      <form>  
-          <label> Wieviel möchten Sie spenden? 
-          </label> 
-          <br/><br/>
-          <input type="text"> 
-      </form>  
-  </div>
-  <br/>
-  <br/>
-    <div class="slidecontainer text-center">
-        <div style="width: 100%; text-align: center;">
-            Wieviel möchtest du spenden?
-            <input type="range" min="1" max="100" value="1" class="slider" id="myRange">
-            <strong id="rangeValue" class="red"></strong>
-            <strong class="red">%</strong> von meine Einkauf
-        </div>
-        <br />
-        <br/>
-    </div>
-    
-    
-    <div class="message" id="message"></div>
-</body>
-<script src="options.js"></script>
->>>>>>> Stashed changes
 </html>
