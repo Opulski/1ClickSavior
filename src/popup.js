@@ -46,7 +46,7 @@
       " gerettet";
     document.querySelector("#overallDonations").innerHTML =
       "Nur noch " +
-      (100 - progressValue) +
+      (100 - progressValue).toFixed(2) +
       "€<br>" +
       "Bis zur nächsten Rettung";
   }
