@@ -34,7 +34,7 @@
     "contextMenus",
     "<all_urls>"
   ],
-  "version": "0.1",
+  "version": "0.2",
   "icons": {
     "256": "img/logo.png"
   }
