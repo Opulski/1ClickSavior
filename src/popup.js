@@ -5,8 +5,21 @@
     chrome.tabs.create({ url: "/options.html" });
   });
 
+  chrome.storage.sync.get(["savingsAmount", "savingsType"], function(result) {
+    var curAmnt = result.savingsAmount,
+      curType = result.savingsType;
+    let finalAmount = 0;
+    if (curType === 2) {
+      finalAmount = result.savingsAmount;
+    } else {
+      finalAmount = 10;
+    }
+    document.getElementById("paypalFormValueAmount").value = finalAmount;
+  });
+
   chrome.storage.sync.get(["overAllDonations"], result => {
     let overAllDonations = result.overAllDonations || 0;
+    overAllDonations = 2500;
     let progressValue = Number(overAllDonations) % 100;
     let numberOfChildsSavedNumber = Math.floor(Number(overAllDonations) / 100);
     document.getElementById("childProgressBar").value = progressValue;
