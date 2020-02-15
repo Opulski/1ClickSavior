@@ -83,6 +83,14 @@
     let donateTo = document.querySelector( '.confirmation .confirmation_header >  h4' );
 
     if ( donateTo ) {
+      chrome.storage.sync.get( [ 'overAllDonations' ], ( result ) => {
+        let donationValue = parseFloat( donateTo.innerText.replace( /Sie haben ([\d\,]+).+EUR an.*/ms, '$1' ).replace( /,/, '.' ) );
+        let oldVal = result.overAllDonations || 0;
+
+        if ( !isNaN( donationValue ) ) {
+          chrome.storage.sync.set( { 'overAllDonations': oldVal + donationValue } );
+        }
+      } );
       donateTo.innerHTML = donateTo.innerHTML.replace( /John Doe's Test Store/, 'die Deutsche Welthungerhilfe' );
     } else {
       setTimeout( () => {
