@@ -18,8 +18,7 @@
   });
 
   chrome.storage.sync.get(["overAllDonations"], result => {
-    let overAllDonations = result.overAllDonations || 0;
-    overAllDonations = 2500;
+    let overAllDonations = (result.overAllDonations || 0).toFixed(2);
     let progressValue = Number(overAllDonations) % 100;
     let numberOfChildsSavedNumber = Math.floor(Number(overAllDonations) / 100);
     document.getElementById("childProgressBar").value = progressValue;
@@ -41,7 +40,10 @@
 
   function createTexts(numberOfChildsSavedNumber, progressValue) {
     document.querySelector("#numberOfChildsSaved").innerText =
-      numberOfChildsSavedNumber + " Kinder Gerettet";
+      numberOfChildsSavedNumber +
+      " Kind" +
+      (numberOfChildsSavedNumber === 1 ? "" : "er") +
+      " gerettet";
     document.querySelector("#overallDonations").innerHTML =
       "Nur noch " +
       (100 - progressValue) +
